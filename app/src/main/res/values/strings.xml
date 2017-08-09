@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PrintSample</string>
+    <string name="text">Zebra App</string>
+    <string name="action_settings">Settings</string>
+    <string name="mac_address">Mac Address</string>
+    <string name="cfgConnect">Connect</string>
+    <string name="cfgDisconnect">Disconnect</string>
+</resources>
