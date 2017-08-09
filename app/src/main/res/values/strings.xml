@@ -5,4 +5,5 @@
     <string name="mac_address">Mac Address</string>
     <string name="cfgConnect">Connect</string>
     <string name="cfgDisconnect">Disconnect</string>
+    <string name="title_activity_teeest">TeeestActivity</string>
 </resources>
