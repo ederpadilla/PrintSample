@@ -63,7 +63,7 @@ public class SecondPrintSample {
         }).start();
     }
 
-    public void teest(final String theBtMacAddress){
+    public void teest(final String theBtMacAddress, final String image){
         new Thread(new Runnable() {
             public void run() {
                 try {
@@ -71,6 +71,8 @@ public class SecondPrintSample {
                     BluetoothConnection thePrinterConn = new BluetoothConnection(theBtMacAddress);
                     String secondZpl = "^XA ^JMA,12^FS^ ^FX Top section with company logo, name and address.^CF0,50 ^FO30,50^FDDRIVE^FS ^CF0,20 ^FO30,100^FDExpo Santa fe^FS ^FO30,135^FDShelbyville TN 38102^FS ^FO30,170^FDUnited States (USA)^FS ^FO20,230^GB500,1,3^FS ^FX Second section with recipient address and permit information.^CFA,20 ^FO20,280^FDPlacas: 345AAA^FS ^FO20,320^FDMarca: Audi^FS ^FO20,360^FDModelo: A3^FS ^FO20,400^FDEntrada: 10-08-2017 10:23am^FS ^FX Third section with qr code. ^FO20,420^BQN,5,10^FD///userid/aaaaaaaaaa/valetid/4^FS^XZ ^FO20,450,0^IMR:http://app.driveapp.mx/drive/valet/images/image_1_55_2017_08_08_18_10_33.png^FS ^FO0,0^GFA,^XZ";
                     // Initialize
+
+                    String imageZpl ="^XA^FX Top section with company logo, name and address.^CF0,60 ^FO30,50^FDDRIVE^FS ^CF0,30 ^FO30,100^FDExpo Santa fe^FS ^FO30,135^FDShelbyville TN 38102^FS ^FO30,170^FDUnited States (USA)^FS ^FO20,230^GB450,1,3^FS ^FX Second section with recipient address and permit information.^CFA,25 ^FO20,280^FDPlacas: 345AAA^FS ^FO20,320^FDMarca: Audi^FS ^FO20,360^FDModelo: A3^FS ^FO20,400^FDEntrada: 10-08-2017 10:23am^FS ^CFA,10 ^FO20,460^GB450,1,3^FS ^FX Third section with qr code. ^FO20,470^BQN,5,10^FD///userid/aaaaaaaaaa/valetid/4^FS^FO50,50^GFB,32,32,2, "+image+"^FS^XZ";
                     Looper.prepare();
                     thePrinterConn.open();
 
@@ -81,7 +83,7 @@ public class SecondPrintSample {
                     Thread.sleep(500);
 
                     // Send the data to printer as a byte array.
-                    zPrinterIns.sendCommand(secondZpl);
+                    zPrinterIns.sendCommand(imageZpl);
 
                     // Make sure the data got to the printer before closing the connection
                     Thread.sleep(500);

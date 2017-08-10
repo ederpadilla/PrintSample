@@ -12,10 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+
 import java.io.ByteArrayOutputStream;
 
 public class TeeestActivity extends AppCompatActivity {
-
+    Bitmap image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,22 +33,31 @@ public class TeeestActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                SecondPrintSample secondPrintSample = new SecondPrintSample();
-                String theBtMacAddress = "AC:3F:A4:1B:20:A6";
-                secondPrintSample.teest(theBtMacAddress);
+                getByteArray();
+
             }
         });
     }
 
+    String imageArray;
     public void getByteArray(){
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        Bitmap image = image = BitmapFactory.decodeResource(getApplicationContext().getResources(),R.drawable.image,options);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        SecondPrintSample secondPrintSample = new SecondPrintSample();
-        String theBtMacAddress = "AC:3F:A4:1B:20:A6";
-        secondPrintSample.teest(theBtMacAddress);
+        Glide.with(getApplicationContext())
+                .load("http://app.driveapp.mx/drive/valet/images/image_1_55_2017_08_08_18_10_33.jpg")
+                .asBitmap()
+                .into(new SimpleTarget<Bitmap>(200, 200) {
+                    @Override
+                    public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
+                        // Do something with bitmap here.
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        byte[] byteArray = stream.toByteArray();
+                        imageArray = byteArray.toString();
+                        SecondPrintSample secondPrintSample = new SecondPrintSample();
+                        String theBtMacAddress = "AC:3F:A4:1B:20:A6";
+                        secondPrintSample.teest(theBtMacAddress,imageArray);
+                    }
+                });
+
     }
 
     public static String toHexString(byte[] bytes) {
