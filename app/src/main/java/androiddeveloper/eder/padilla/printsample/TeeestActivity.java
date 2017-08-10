@@ -29,7 +29,9 @@ public class TeeestActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                getByteArray();
+                SecondPrintSample secondPrintSample = new SecondPrintSample();
+                String theBtMacAddress = "AC:3F:A4:1B:20:A6";
+                secondPrintSample.teest(theBtMacAddress);
             }
         });
     }
@@ -42,7 +44,7 @@ public class TeeestActivity extends AppCompatActivity {
         byte[] byteArray = stream.toByteArray();
         SecondPrintSample secondPrintSample = new SecondPrintSample();
         String theBtMacAddress = "AC:3F:A4:1B:20:A6";
-        secondPrintSample.teest(theBtMacAddress,toHexString(byteArray),sizeOf(image));
+        secondPrintSample.teest(theBtMacAddress);
     }
 
     public static String toHexString(byte[] bytes) {

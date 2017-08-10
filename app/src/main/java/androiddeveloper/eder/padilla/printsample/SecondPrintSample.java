@@ -63,13 +63,13 @@ public class SecondPrintSample {
         }).start();
     }
 
-    public void teest(final String theBtMacAddress, final String byteArray, final int size){
+    public void teest(final String theBtMacAddress){
         new Thread(new Runnable() {
             public void run() {
                 try {
                     // Instantiate connection for given Bluetooth&reg; MAC Address.
                     BluetoothConnection thePrinterConn = new BluetoothConnection(theBtMacAddress);
-                    String secondZpl = "^XA ^JMA,12^FS^ ^FX Top section with company logo, name and address.^CF0,50 ^FO30,50^FDDRIVE^FS ^CF0,20 ^FO30,100^FDExpo Santa fe^FS ^FO30,135^FDShelbyville TN 38102^FS ^FO30,170^FDUnited States (USA)^FS ^FO20,230^GB500,1,3^FS ^FX Second section with recipient address and permit information.^CFA,20 ^FO20,280^FDPlacas: 345AAA^FS ^FO20,320^FDMarca: Audi^FS ^FO20,360^FDModelo: A3^FS ^FO20,400^FDEntrada: 10-08-2017 10:23am^FS ^FX Third section with qr code. ^FO20,420^BQN,5,10^FD///userid/aaaaaaaaaa/valetid/4^FS^XZ ^FO20,450,0^IMR:http://app.driveapp.mx/drive/valet/images/image_1_55_2017_08_08_18_10_33.png^FS ^FO0,0^GFA,"+byteArray.length()+","+byteArray.length()+","+size+byteArray +"^XZ";
+                    String secondZpl = "^XA ^JMA,12^FS^ ^FX Top section with company logo, name and address.^CF0,50 ^FO30,50^FDDRIVE^FS ^CF0,20 ^FO30,100^FDExpo Santa fe^FS ^FO30,135^FDShelbyville TN 38102^FS ^FO30,170^FDUnited States (USA)^FS ^FO20,230^GB500,1,3^FS ^FX Second section with recipient address and permit information.^CFA,20 ^FO20,280^FDPlacas: 345AAA^FS ^FO20,320^FDMarca: Audi^FS ^FO20,360^FDModelo: A3^FS ^FO20,400^FDEntrada: 10-08-2017 10:23am^FS ^FX Third section with qr code. ^FO20,420^BQN,5,10^FD///userid/aaaaaaaaaa/valetid/4^FS^XZ ^FO20,450,0^IMR:http://app.driveapp.mx/drive/valet/images/image_1_55_2017_08_08_18_10_33.png^FS ^FO0,0^GFA,^XZ";
                     // Initialize
                     Looper.prepare();
                     thePrinterConn.open();
