@@ -80,7 +80,7 @@ public class MainActivity extends ListActivity {
 
         SecondPrintSample secondPrintSample = new SecondPrintSample();
         String theBtMacAddress = "AC:3F:A4:1B:20:A6";
-        secondPrintSample.teest(theBtMacAddress);
+       // secondPrintSample.teest(theBtMacAddress);
     }
 
 
@@ -127,7 +127,7 @@ public class MainActivity extends ListActivity {
                     public void run() {
                         SecondPrintSample secondPrintSample = new SecondPrintSample();
                         String theBtMacAddress = "AC:3F:A4:1B:20:A6";
-                        secondPrintSample.teest(theBtMacAddress);
+                        //secondPrintSample.teest(theBtMacAddress);
                         //Looper.prepare();
                         //SecondPrintSample secondPrintSample = new SecondPrintSample();
                         //String theBtMacAddress = "AC:3F:A4:1B:20:A6";
@@ -138,7 +138,7 @@ public class MainActivity extends ListActivity {
                         ////printText(zpl);
                         ////printZpl();
                         ////secondTesT();
-                        ////printImage();
+                        printImage();
                         //Looper.loop();
                         //Looper.myLooper().quit();
                     }
